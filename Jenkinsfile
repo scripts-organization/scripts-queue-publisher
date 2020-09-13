@@ -16,8 +16,8 @@ pipeline {
       stage('Preparation') {
          steps {
             echo 'Installing dependencies'
-            sh 'go version'
-            sh 'go get -u golang.org/x/lint/golint'
+            // sh 'go version'
+            // sh 'go get -u golang.org/x/lint/golint'
             cleanWs()
             git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/${SERVICE_NAME}"
          }
@@ -25,7 +25,7 @@ pipeline {
       stage('Build') {
          steps {
             echo 'Compiling and building'
-            sh "go build"
+            // sh "go build"
          }
       }
 
