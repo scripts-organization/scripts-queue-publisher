@@ -14,12 +14,23 @@ var rabbit_port = os.Getenv("RABBIT_PORT")
 var rabbit_user = os.Getenv("RABBIT_USERNAME")
 var rabbit_password = os.Getenv("RABBIT_PASSWORD")
 
+
 func main() {
 
 	router := httprouter.New()
 
 	router.POST("/publish/:message", func(w http.ResponseWriter, r *http.Request, p httprouter.Params){
 		submit(w,r,p)
+	})
+
+	router.GET("/publish/:message", func(w http.ResponseWriter, r *http.Request, p httprouter.Params){
+		fmt.Println("publish GET success!")
+		
+		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Content-Type","application/json")
+		resp := fmt.Sprintf("Result1")
+		w.Write([]byte(resp))
+
 	})
 
 	fmt.Println("Running...")
