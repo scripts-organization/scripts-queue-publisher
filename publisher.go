@@ -31,8 +31,8 @@ func submit(writer http.ResponseWriter, request *http.Request, p httprouter.Para
 	
 	fmt.Println("Received message: " + message)
 
-	//conn, err := amqp.Dial("amqp://" + rabbit_user + ":" +rabbit_password + "@" + rabbit_host + ":" + rabbit_port +"/")
-	conn, err := amqp.Dial("amqp://" + rabbit_user + ":" +rabbit_password + "@" + "127.0.0.1" + ":" + "8080" +"/")
+	conn, err := amqp.Dial("amqp://" + rabbit_user + ":" +rabbit_password + "@" + rabbit_host + ":" + rabbit_port +"/")
+	// conn, err := amqp.Dial("amqp://" + rabbit_user + ":" +rabbit_password + "@" + "127.0.0.1" + ":" + "8080" +"/")
 
 	if err != nil {
 		log.Fatalf("%s: %s", "Failed to connect to RabbitMQ", err)
